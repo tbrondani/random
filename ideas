@@ -1,0 +1,11 @@
+-> Backup route53 domains
+  -> terraform 
+    https://registry.terraform.io/modules/bridgecrewio/route53-backup-restore/aws/latest?tab=dependencies
+  -> aws cli  
+    https://medium.com/@sharma.naman/how-to-take-aws-route53-backup-2bc3a0343b4  
+  -> lambda
+    https://www.lisenet.com/2014/backup-all-route53-hosted-zones-and-put-on-s3-with-debian/
+    
+  
+
+-> backup aws loadbalancer
