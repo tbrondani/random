@@ -1,0 +1,48 @@
+#Based on https://asecure.cloud/a/scp_lambda_open_url/
+#They rock!
+##### SCP
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "lambda:CreateFunctionUrlConfig",
+                "lambda:UpdateFunctionUrlConfig"
+            ],
+            "Resource": "arn:aws:arn:aws:lambda:*:*:function/*",
+            "Effect": "Deny",
+            "Condition": {
+                "StringNotEquals": {
+                    "lambda:FunctionUrlAuthType": "AWS_IAM"
+                }
+            }
+        }
+    ]
+}
+
+
+##### Single-Account Policy
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Deny",
+            "Action": [
+                "lambda:CreateFunctionUrlConfig",
+                "lambda:UpdateFunctionUrlConfig"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringNotEquals": {
+                    "lambda:FunctionUrlAuthType": "AWS_IAM"
+                }
+            }
+        }
+    ]
+}
+
+
+
