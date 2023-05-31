@@ -33,6 +33,8 @@ sort
 cal
 date
 w
+file
+
 
 
 navegação/diretorios/pastas + :
