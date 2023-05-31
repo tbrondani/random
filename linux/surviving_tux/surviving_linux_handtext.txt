@@ -1,0 +1,129 @@
+#### COMANDOS CONCEITO BÁSICO
+
+A explicação + simples seria "comando linux é um arquivo executavel do linux disponivel no seu terminal"
+
+
+comando <opcoes> <argumentos>
+
+comando é a operação que você quer executar
+
+opcoes são tipos de execução que modificam a saida do comando
+
+argumentos são os destinos dos comandos, onde você quer que o comando + opção atue.
+
+
+
+
+Esta é a lista de comandos que vamos explorar ao longo do curso/treinamento/workshop.
+pedir ajuda:
+man
+apropos
+whatis
+
+Acesso : 
+ssh
+exit
+
+seguros para executar a qualquer momento:
+clear
+whoami
+pwd
+ls
+sort
+cal
+date
+w
+
+
+navegação/diretorios/pastas + :
+pwd
+ls
+mkdir
+cd
+ln
+
+verificar recursos da máquina
+top
+htop
+ps
+free
+df
+uname
+
+manipular processos da máquina
+kill
+pkill
+systemctl
+reboot
+poweroff
+shutdown
+
+
+manipular arquivos
+find
+shred
+touch
+echo
+cp
+rm
+rmdir
+zip
+unzip
+grep
+awk
+
+verificar diferenças entre os arquivos
+cmp
+diff
+
+manipular permissoes em arquivos
+chmod
+chown
+
+apenas olhar
+less
+cat
+more
+head
+tail
+find
+neofetch
+screenfetch
+
+editor de texto
+vim
+nano
+emacs
+
+networking
+ifconfig
+ip address
+resolvectl status
+ping
+netstat
+ss
+iptables
+ufw
+dig
+nslookup
+
+usuarios / permissoes
+useradd
+sudo
+adduser
+passwd
+
+
+permissão admin
+sudo 
+su
+
+administração de pacotes instalados no SO.
+apt
+
+
+web/internet
+curl
+wget
+
+
