@@ -122,23 +122,23 @@
 
 ############################################
 #AULA3
-'''
-É muito comum na programação, precisarmos que determinado bloco de código seja executado apenas se determinada condição for satisfeita.
-
-Para esses casos, Python disponibiliza formas de se controlar o fluxo de execução de programas: são as chamadas Estruturas Condicionais IF/ELIF/ELSE.
-
-Um conceito muito importante para se trabalhar com condições em Python é entender o conceito dos Operadores: "==, >=, <=, >, <"
-
-Operador	Tipo	    Valor
-==	        Igualdade	Verifica a igualdade entre dois valores.
-!=          Igualdade  	Verifica a diferença entre dois valores.
-> 	        Comparação	Verificar se o valor A é maior que o valor B.
-< 	        Comparação	Verifica se o valor A é menor que o valor B.
->=	        Comparação	Verifica se o valor A é maior ou igual ao valor B.
-<=	        Comparação	Verifica se o valor A é menor ou igual ao valor B.
-In	        Seqüência	Verifica se o valor A está contido em um conjunto.
-
-# '''
+#'''
+#É muito comum na programação, precisarmos que determinado bloco de código seja executado apenas se determinada condição for satisfeita.
+#
+#Para esses casos, Python disponibiliza formas de se controlar o fluxo de execução de programas: são as chamadas Estruturas Condicionais IF/ELIF/ELSE.
+#
+#Um conceito muito importante para se trabalhar com condições em Python é entender o conceito dos Operadores: "==, >=, <=, >, <"
+#
+#Operador	Tipo	    Valor
+#==	        Igualdade	Verifica a igualdade entre dois valores.
+#!=          Igualdade  	Verifica a diferença entre dois valores.
+#> 	        Comparação	Verificar se o valor A é maior que o valor B.
+#< 	        Comparação	Verifica se o valor A é menor que o valor B.
+#>=	        Comparação	Verifica se o valor A é maior ou igual ao valor B.
+#<=	        Comparação	Verifica se o valor A é menor ou igual ao valor B.
+#In	        Seqüência	Verifica se o valor A está contido em um conjunto.
+#
+#'''
 
 # a = 10
 # b = 20
