@@ -122,23 +122,23 @@
 
 ############################################
 #AULA3
-#'''
-#É muito comum na programação, precisarmos que determinado bloco de código seja executado apenas se determinada condição for satisfeita.
-#
-#Para esses casos, Python disponibiliza formas de se controlar o fluxo de execução de programas: são as chamadas Estruturas Condicionais IF/ELIF/ELSE.
-#
-#Um conceito muito importante para se trabalhar com condições em Python é entender o conceito dos Operadores: "==, >=, <=, >, <"
-#
-#Operador	Tipo	    Valor
-#==	        Igualdade	Verifica a igualdade entre dois valores.
-#!=          Igualdade  	Verifica a diferença entre dois valores.
-#> 	        Comparação	Verificar se o valor A é maior que o valor B.
-#< 	        Comparação	Verifica se o valor A é menor que o valor B.
-#>=	        Comparação	Verifica se o valor A é maior ou igual ao valor B.
-#<=	        Comparação	Verifica se o valor A é menor ou igual ao valor B.
-#In	        Seqüência	Verifica se o valor A está contido em um conjunto.
-#
-#'''
+'''
+É muito comum na programação, precisarmos que determinado bloco de código seja executado apenas se determinada condição for satisfeita.
+
+Para esses casos, Python disponibiliza formas de se controlar o fluxo de execução de programas: são as chamadas Estruturas Condicionais IF/ELIF/ELSE.
+
+Um conceito muito importante para se trabalhar com condições em Python é entender o conceito dos Operadores: "==, >=, <=, >, <"
+
+Operador	Tipo	    Valor
+==	        Igualdade	Verifica a igualdade entre dois valores.
+!=          Igualdade  	Verifica a diferença entre dois valores.
+> 	        Comparação	Verificar se o valor A é maior que o valor B.
+< 	        Comparação	Verifica se o valor A é menor que o valor B.
+>=	        Comparação	Verifica se o valor A é maior ou igual ao valor B.
+<=	        Comparação	Verifica se o valor A é menor ou igual ao valor B.
+In	        Seqüência	Verifica se o valor A está contido em um conjunto.
+
+# '''
 
 # a = 10
 # b = 20
@@ -207,7 +207,6 @@
 # 2 - Faça um Programa que peça um valor e mostre na tela se o valor é positivo ou negativo.
 
 # n1 = int(input("insira n1: "))
-
 # if n1 > 0:
 #     print ("numero positivo")
 # elif n1 < 0:
@@ -216,7 +215,8 @@
 # 3 - Faça um Programa que verifique se uma letra digitada é "F" ou "M". Conforme a letra escrever: F - Feminino, M - Masculino, Sexo Inválido.
 
 
-# l1 = str(input("insira letra: "))
+# l = str(input("insira letra: "))
+# l1 = l.capitalize()
 
 # if l1 == str("F"):
 #     print ("sexo feminino")
@@ -227,15 +227,28 @@
 
 # 4 - Faça um Programa que verifique se uma letra digitada é vogal ou consoante.
 
-# l1 = str(input("insira letra: "))
+# l = str(input("insira letra: "))
+# l1 = l.lower()
 
 # if l1 in ('a', 'e', 'i', 'o', 'u'):
 #     print ("vogal")
+# elif l1 in ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'):
+#     print("consoante")
 # elif l1 in ('0','1','2','3','4','5','6','7','8','9'):
 #     print ("insira uma letra e nao um numero")
 # else:
-#     print("consoante")
+#     print("parametros invalidos tente novamente")
 
+#resposta do rubão
+# vogal = ('a','e','i','o','u')
+# consoante = ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z')
+# letra = '3'
+# if letra.lower() in vogal:
+#     print('isso é um vogal')
+# elif letra.lower() in consoante:
+#     print('isso é um consoante')
+# else:
+#     print("isso não é vogal ou consoante.")
 
 
 # 5 - Faça um programa para a leitura de duas notas de um aluno e dizer se ele foi aprovado, reprovado ou estar em recuperação
@@ -243,14 +256,11 @@
     # A mensagem "Aluno Reprovado", se a média for menor do que 6;
     # A mensagem "Aluno em recuperação", se a média for maior ou igual a 6 e menor que 7.
 
-# n1 = int(input("insira nota1: "))
-# n2 = int(input("insira nota2: "))
+# n1 = float(input("insira nota1: "))
+# n2 = float(input("insira nota2: "))
 
 # media = (n1+n2)/2
 # print("a nota eh:", media)
-
-# if not n1.isdigit() or not n2.isdigit():
-#     print("Entrada inválida. Por favor, insira números inteiros.")
 
 # if media >= 7:
 #      print ("Aluno Aprovado")
@@ -265,9 +275,9 @@
     # as notas de cada bimestre vai de 0 a 10, logo, dependendo do valor do último bimestre, mostre em uma mensagem que ele já está reprovado.
 
 
-# n1 = int(input("insira bimestre1:"))
-# n2 = int(input("insira bimestre2:"))
-# n3 = int(input("insira bimestre3:"))
+# n1 = float(input("insira bimestre1:"))
+# n2 = float(input("insira bimestre2:"))
+# n3 = float(input("insira bimestre3:"))
 
 
 # media = (n1+n2+n3)/3
@@ -298,6 +308,14 @@
 # else:
 #     print("algo deu errado")
 
+# n1 = int(input("insira 1:"))
+# n2 = int(input("insira 2:"))
+# n3 = int(input("insira 3:"))
+
+# maior = max(num1, num2, num3)
+# menor = min(n1, n2, n3)
+# print(f"{maior}")
+
 
 
 # Faça um Programa que leia três números e mostre o maior e o menor deles.
@@ -306,6 +324,9 @@
 # n2 = int(input("insira 2:"))
 # n3 = int(input("insira 3:"))
 
+# maior = max(num1, num2, num3)
+# menor = min(n1, n2, n3)
+# print(f"{menor}")
 
 # if n1 < n2 and n1 < n3:
 #      print ("n1 is the lowest")
@@ -315,6 +336,8 @@
 #      print ("n3 is the lowest")
 # else:
 #     print("algo deu errado")
+
+
 
 # Faça um programa que pergunte o preço de três produtos e informe qual produto você deve comprar, sabendo que a decisão é sempre pelo mais barato.
 
@@ -375,8 +398,8 @@
         # o valor do aumento;
         # o novo salário, após o aumento.
 
-# nome = str(input("insira seu nome"))
-# cargo = str(input(("insira seu cargo")))
+# nome = str(input("insira seu nome: "))
+# cargo = str(input(("insira seu cargo: ")))
 
 # s = float(input("insira seu salario:"))
 
@@ -397,4 +420,24 @@
 #     print(f"nome:{nome}\n cargo:{cargo}\n salario pre-reajuste:{s}\n salario pos-ajuste {sa}\n valor do aumento:{p5}\n percentual aplicado:5%\n ")
 # else:
 #     print ("oops algo deu errado")
-#end aula 3#
+
+
+#resposta do rubão
+#     percentual_aumento = 0
+# if salario <= 1200.00:
+#     percentual_aumento = 20
+# elif salario <= 1800.00:
+#     percentual_aumento = 15
+# elif salario <= 3000.00:
+#     percentual_aumento = 10
+# else:
+#     percentual_aumento = 5
+
+# valor_aumento = salario * (percentual_aumento / 100)
+# novo_salario = salario + valor_aumento
+
+# print("Nome do funcionário:", nome)
+# print("Cargo do funcionário:", cargo)
+# print("Salário antes do reajuste: R$", salario)
+# print("Percentual de aumento aplicado:", percentual_aumento, "%")
+# print
