@@ -41,3 +41,7 @@ this one is estimated to be the "most professional way"
 What's your favorite? Will you jump back into legacy code and change it? Any ideas or toughts? 
 
 Please comment, like and share :)
+
+<a href="https://www.buymeacoffee.com/tbrondani" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
