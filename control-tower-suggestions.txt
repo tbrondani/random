@@ -1,0 +1,11 @@
+https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html
+https://docs.aws.amazon.com/controltower/latest/APIReference/Welcome.html
+Workshop - https://catalog.workshops.aws/control-tower
+Youtube sessions
+https://www.youtube.com/watch?v=m2wjmGvY2pY&pp=ygURYXdzIGNvbnRyb2wgdG93ZXI%3D
+https://www.youtube.com/watch?v=fDtxiBW_J8I&t=420s&pp=ygURYXdzIGNvbnRyb2wgdG93ZXI%3D
+https://www.youtube.com/watch?v=NkE9_okfPG8&t=1978s&pp=ygURYXdzIGNvbnRyb2wgdG93ZXI%3D
+https://aws.amazon.com/blogs/mt/category/management-tools/aws-control-tower/
+https://aws.amazon.com/blogs/aws/category/management-tools/aws-control-tower/
+https://www.youtube.com/watch?v=Zxrs6YXMidk&t=20s&pp=ygURYXdzIGNvbnRyb2wgdG93ZXI%3D
+https://www.youtube.com/watch?v=O_r3-thv0pA&pp=ygURYXdzIGNvbnRyb2wgdG93ZXI%3D
