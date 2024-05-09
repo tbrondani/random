@@ -9,6 +9,10 @@ k apply -f kubectl apply -n argocd -f \
 https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 ```
+argocd admin initial-password -n argocd
+argocd login 
+```
+```
 kubectl edit cm -n argocd argocd-cm
 ```
 add the following and shift zz.
