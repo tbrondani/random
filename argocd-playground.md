@@ -27,6 +27,19 @@ argocd account generate-token --account tales
 ```
 argocd account update-password --account tales
 ```
+
+disable security in argo
+```
+k edit cm -n argocd argocd-cmd-params-cm
+```
+add in the end of the yaml file 
+```
+data
+  server.insecure: "true"
+```
+
+
 refs:  
-https://kind.sigs.k8s.io/docs/user/quick-start/  
-https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/
+1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
+2 - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/
+3 - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#disable-internal-tls
