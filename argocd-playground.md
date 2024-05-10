@@ -63,7 +63,10 @@ argo app create grafana \
 --dest-server https://kubernetes.default.svc
 ```
 
+
+
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
 2 - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/  
 3 - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#disable-internal-tls  
+4 - https://dustinspecker.com/posts/resolving-kubernetes-services-from-host-when-using-kind/  
