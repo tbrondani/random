@@ -64,6 +64,47 @@ argo app create grafana \
 ```
 
 
+sample python to retrieve info from the api querying specific parameters
+```
+import requests
+ARGOCD_SERVER = "localhost:8080"
+TOKEN = ''
+
+url = f"http://{ARGOCD_SERVER}/api/v1/applications?proj=default"
+
+headers = {
+    "Accept": "application/json",
+}
+cookies = {
+    "argocd.token": TOKEN,
+}
+
+
+response = requests.get(url, headers=headers, cookies=cookies, verify=False)  # Disabling SSL verification with verify=False
+
+#print(response.json())  # Assuming the response is in JSON format
+
+data = response.json()
+
+print('-----')
+
+for item in data['items']:
+    metadata = item['metadata']
+    spec = item['spec']
+    status = item['status']
+    print("Name:", metadata['name'])
+    print("Chart Version:", spec['source']['targetRevision'])
+    print("Repo URL:", spec['source']['repoURL'])
+    print("Chart:", spec['source']['chart'])
+    print("Destination Server:", spec['destination']['server'])
+    print("Sync Status:", status['sync']['status'])
+    print("Health:", status['health']['status'])
+    if 'images' in status['summary']:
+        print("Image Being Used:", status['summary']['images'][0])
+    print()
+
+```
+
 
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
