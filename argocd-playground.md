@@ -38,6 +38,12 @@ data
   server.insecure: "true"
 ```
 
+curl calls
+```
+export TOKEN=token_generated_through_argocli
+curl -vk $ARGOCD_SERVER/api/v1/applications --cookie "argocd.token=$TOKEN"
+```
+
 
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
