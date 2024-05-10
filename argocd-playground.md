@@ -44,6 +44,15 @@ export TOKEN=token_generated_through_argocli
 curl -vk $ARGOCD_SERVER/api/v1/applications --cookie "argocd.token=$TOKEN"
 ```
 
+add the cluster to your kind environment
+```
+argo cluster add kind-argo
+```
+
+known issue with kind and argocd- connection refused solution.
+``
+https://github.com/argoproj/argo-cd/issues/4204#issuecomment-1040210354
+``
 
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
