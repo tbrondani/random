@@ -54,6 +54,15 @@ known issue with kind and argocd- connection refused solution.
 https://github.com/argoproj/argo-cd/issues/4204#issuecomment-1040210354
 ``
 
+add a sample app
+```
+argo app create grafana \
+--repo https://grafana.github.io/helm-charts \
+--helm-chart grafana \
+--revision 7.0.0 \
+--dest-server https://kubernetes.default.svc
+```
+
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
 2 - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/  
