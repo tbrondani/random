@@ -41,5 +41,5 @@ data
 
 refs:  
 1 - https://kind.sigs.k8s.io/docs/user/quick-start/  
-2 - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/
-3 - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#disable-internal-tls
+2 - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/  
+3 - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#disable-internal-tls  
