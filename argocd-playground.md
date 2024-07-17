@@ -65,7 +65,7 @@ argo app create grafana \
 
 
 sample python to retrieve info from the api querying specific parameters
-```
+```python 
 import requests
 ARGOCD_SERVER = "localhost:8080"
 TOKEN = ''
@@ -79,15 +79,13 @@ cookies = {
     "argocd.token": TOKEN,
 }
 
+response = requests.get(url, headers=headers, cookies=cookies, verify=False)
+#Disable SSL verification verify=False
 
-response = requests.get(url, headers=headers, cookies=cookies, verify=False)  # Disabling SSL verification with verify=False
-
-#print(response.json())  # Assuming the response is in JSON format
-
+#print(response.json()) # Assuming the response is in JSON format
 data = response.json()
 
 print('-----')
-
 for item in data['items']:
     metadata = item['metadata']
     spec = item['spec']
@@ -102,7 +100,6 @@ for item in data['items']:
     if 'images' in status['summary']:
         print("Image Being Used:", status['summary']['images'][0])
     print()
-
 ```
 
 
