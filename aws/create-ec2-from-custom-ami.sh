@@ -6,4 +6,7 @@ aws ec2 run-instances \
 --subnet-id subnet-123456789123 \
 --key-name yourkey \
 --security-group-ids 'sg-xxxxxxxxxxxxxxx' \
---tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=EC2MACHINE},{Key=environment,Value=DEV},{Key=billing,Value=cloud},{Key=payer,Value=organization}]'
+--block-device-mappings '[{"DeviceName":"/dev/xvda","Ebs":{"VolumeSize":20,"VolumeType":"gp3"}}]' \
+--iam-instance-profile Name=SuperEC2Role \
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=EC2MACHINE},{Key=environment,Value=DEV},{Key=billing,Value=cloud},{Key=payer,Value=organization}]' \
+--dry-run
