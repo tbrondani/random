@@ -17,17 +17,7 @@
 #  - max storage and multi-az bugs as well
 
 echo '### Listing all databses and it\'s statuses ###'
-aws rds describe-db-instances \
-    --query 'DBInstances[*]' \
-    --output json | \
-    jq -r '.[] | 
-        "Database Name: \(.DBInstanceIdentifier)\n\
-Instance Size: \(.DBInstanceClass)\n\
-Multi-AZ: \(.MultiAZ)\n\
-Disk Type: \(.StorageType)\n\
-Encrypted: \(.StorageEncrypted)\n\
-Size (GB): \(.AllocatedStorage)\n\
-Max Storage (GB): \(.MaxAllocatedStorage // \"N/A\")\n\
----"'
+aws rds describe-db-instances --query 'DBInstances[*]' --output json | jq -r '.[] | "Database Name: \(.DBInstanceIdentifier)\nInstance Size: \(.DBInstanceClass)\nMulti-AZ: \(.MultiAZ)\nDisk Type: \(.StorageType)\nEncrypted: \(.StorageEncrypted)\nSize (GB): \(.AllocatedStorage)\nMax Storage (GB): \(.MaxAllocatedStorage // "N/A")\n---"'
+
 
 echo "### done ###"
