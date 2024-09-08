@@ -1,0 +1,24 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "BlockUnusedRegions",
+        "Effect": "Deny",
+        "NotAction": [
+          "a4b:*",
+              "ec2:*"
+        ],
+        "Resource": [
+          "*"
+        ],
+        "Condition": {
+          "StringNotEquals": {
+            "aws:RequestedRegion": [
+              "us-east-2",
+              "us-west-1"            
+            ]
+          }
+        }
+      }
+    ]
+  }
