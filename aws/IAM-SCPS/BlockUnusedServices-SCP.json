@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+      "Sid": "pleasedontcryptomineme",
+      "Effect": "Deny",
+      "Action": [
+        "amplify:*",
+        "sagemaker:*",
+        "lightsail:*",
+        "elasticmapreduce:*",
+        "apprunner:*",
+        "outposts:*",
+        "elasticbeanstalk:*",
+        "workspaces:*"
+      ],
+      "Resource": "*"
+    }
+  }
+  

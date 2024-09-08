@@ -1,0 +1,20 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+      "Sid": "pleaselabelstuff",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": [
+        "arn:aws:ec2:*:*:instance/*",
+        "arn:aws:ec2:*:*:volume/*"
+      ],
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/CostCenter": "true",
+          "aws:RequestTag/Project": "true",
+          "aws:RequestTag/Owner": "true"
+        }
+      }
+    }
+  }
+  
