@@ -1,0 +1,30 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyUnencryptedRDSCreation",
+      "Effect": "Deny",
+      "Action": [
+        "rds:CreateDBInstance"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ForAnyValue:StringEquals": {
+          "rds:DatabaseEngine": [
+            "mariadb",
+            "mysql",
+            "oracle-ee",
+            "postgres",
+            "sqlserver-ex",
+            "sqlserver-se",
+            "sqlserver-web"
+          ]
+        },
+        "Bool": {
+          "rds:StorageEncrypted": "false"
+        }
+      }
+    }
+  ]
+}
+#test pending.
