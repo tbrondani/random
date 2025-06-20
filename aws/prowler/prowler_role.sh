@@ -1,5 +1,6 @@
 #!/bin/bash
-##Create or Destroy a Prolwer Custom Role
+##Create or Destroy a Prowler User/Role
+## TLDR fetches the github repo from prowler and create a user or role 
 ## If you need other service instead of EC2 edit the trustpolicy.
 ## I dont own prowler , this is just a way to make your life easier!
 
@@ -56,9 +57,9 @@ EOF
 }
 
 destroyrole() {
-  echo "[!] Forcing deletion of IAM role and policy (ignoring errors)..."
+  echo "[!] Deleting IAM role (ignoring errors)..."
   aws iam delete-role --role-name "$ROLE_NAME" --no-cli-pager 2>/dev/null
-  aws iam delete-policy --policy-arn "$POLICY_ARN" --no-cli-pager 2>/dev/null
+  deletepolicy
   echo "[✓] Role deletion completed!"
 }
 
@@ -74,17 +75,24 @@ createuser() {
   echo "[✓] User created and policies attached!"
 }
 
-deleteuser() {
+destroyuser() {
   echo "[!] Detaching policies from user (ignoring errors)..."
   aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn "$POLICY_ARN" --no-cli-pager 2>/dev/null
   aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/SecurityAudit --no-cli-pager 2>/dev/null
   aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/job-function/ViewOnlyAccess --no-cli-pager 2>/dev/null
 
-  echo "[!] Deleting IAM user: $USER_NAME..."
+  echo "[!] Destroying IAM user: $USER_NAME..."
   aws iam delete-user --user-name "$USER_NAME" --no-cli-pager 2>/dev/null
 
+  deletepolicy
   echo "[✓] User deletion completed!"
 }
+
+deletepolicy() {
+  echo "[!] Deleting custom Prowler policy to avoid leaving unused stuff in the account (ignoring errors)..."
+  aws iam delete-policy --policy-arn "$POLICY_ARN" --no-cli-pager 2>/dev/null
+}
+
 
 # Main command dispatcher
 case "$1" in
@@ -97,11 +105,11 @@ case "$1" in
   createuser)
     createuser
     ;;
-  deleteuser)
-    deleteuser
+  destroyuser)
+    destroyuser
     ;;
   *)
-    echo "Usage: $0 {createrole|destroyrole|createuser|deleteuser}"
+    echo "Usage: $0 {createrole|destroyrole|createuser|destroyuser}"
     exit 1
     ;;
 esac
