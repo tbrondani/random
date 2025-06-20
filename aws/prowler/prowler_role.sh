@@ -1,17 +1,18 @@
 #!/bin/bash
 ##Create or Destroy a Prolwer Custom Role
 ## If you need other service instead of EC2 edit the trustpolicy.
-# I dont own prowler , this is just a way to make your life easier!
+## I dont own prowler , this is just a way to make your life easier!
 
 ROLE_NAME="ProwlerRole"
-POLICY_NAME="ProwlerCustomPolicy"
+POLICY_NAME="ProwlerAdditionsPolicy"
 TRUST_POLICY_FILE="trust-policy.json"
 CUSTOM_POLICY_FILE="prowler-policy.json"
+USER_NAME="ProwlerUser"
 
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text --no-cli-pager)
 POLICY_ARN="arn:aws:iam::$ACCOUNT_ID:policy/$POLICY_NAME"
 
-create() {
+createrole() {
   echo "[+] Downloading policy from GitHub..."
   curl -s -o "$CUSTOM_POLICY_FILE" https://raw.githubusercontent.com/prowler-cloud/prowler/master/permissions/prowler-additions-policy.json
 
@@ -21,7 +22,7 @@ create() {
     --policy-document file://"$CUSTOM_POLICY_FILE" \
     --no-cli-pager
 
-  echo "[+] Creating trust policy for EC2 service..."
+  echo "[+] Creating trust policy for anyone in the account..."
   cat > "$TRUST_POLICY_FILE" <<EOF
 {
   "Version": "2012-10-17",
@@ -29,7 +30,7 @@ create() {
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "ec2.amazonaws.com"
+        "AWS": "arn:aws:iam::$ACCOUNT_ID:root"
       },
       "Action": "sts:AssumeRole"
     }
@@ -43,7 +44,7 @@ EOF
     --assume-role-policy-document file://"$TRUST_POLICY_FILE" \
     --no-cli-pager
 
-  echo "[+] Attaching policies..."
+  echo "[+] Attaching policies to role..."
   aws iam attach-role-policy --role-name "$ROLE_NAME" --policy-arn "$POLICY_ARN" --no-cli-pager
   aws iam attach-role-policy --role-name "$ROLE_NAME" --policy-arn arn:aws:iam::aws:policy/SecurityAudit --no-cli-pager
   aws iam attach-role-policy --role-name "$ROLE_NAME" --policy-arn arn:aws:iam::aws:policy/job-function/ViewOnlyAccess --no-cli-pager
@@ -51,28 +52,56 @@ EOF
   echo "[*] Cleaning up temporary files..."
   rm -f "$CUSTOM_POLICY_FILE" "$TRUST_POLICY_FILE"
 
-  echo "[✓] Creation completed successfully!"
+  echo "[✓] Role creation completed!"
 }
 
-destroy() {
+destroyrole() {
   echo "[!] Forcing deletion of IAM role and policy (ignoring errors)..."
-
   aws iam delete-role --role-name "$ROLE_NAME" --no-cli-pager 2>/dev/null
   aws iam delete-policy --policy-arn "$POLICY_ARN" --no-cli-pager 2>/dev/null
-
-  echo "[✓] Destruction completed!"
+  echo "[✓] Role deletion completed!"
 }
 
-# Main entry point
+createuser() {
+  echo "[+] Creating IAM user: $USER_NAME..."
+  aws iam create-user --user-name "$USER_NAME" --no-cli-pager
+
+  echo "[+] Attaching policies to user..."
+  aws iam attach-user-policy --user-name "$USER_NAME" --policy-arn "$POLICY_ARN" --no-cli-pager
+  aws iam attach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/SecurityAudit --no-cli-pager
+  aws iam attach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/job-function/ViewOnlyAccess --no-cli-pager
+
+  echo "[✓] User created and policies attached!"
+}
+
+deleteuser() {
+  echo "[!] Detaching policies from user (ignoring errors)..."
+  aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn "$POLICY_ARN" --no-cli-pager 2>/dev/null
+  aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/SecurityAudit --no-cli-pager 2>/dev/null
+  aws iam detach-user-policy --user-name "$USER_NAME" --policy-arn arn:aws:iam::aws:policy/job-function/ViewOnlyAccess --no-cli-pager 2>/dev/null
+
+  echo "[!] Deleting IAM user: $USER_NAME..."
+  aws iam delete-user --user-name "$USER_NAME" --no-cli-pager 2>/dev/null
+
+  echo "[✓] User deletion completed!"
+}
+
+# Main command dispatcher
 case "$1" in
-  create)
-    create
+  createrole)
+    createrole
     ;;
-  destroy)
-    destroy
+  destroyrole)
+    destroyrole
+    ;;
+  createuser)
+    createuser
+    ;;
+  deleteuser)
+    deleteuser
     ;;
   *)
-    echo "Usage: $0 {create|destroy}"
+    echo "Usage: $0 {createrole|destroyrole|createuser|deleteuser}"
     exit 1
     ;;
 esac
